@@ -1,0 +1,132 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Complaint Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            margin: 40px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .logo {
+            width: 120px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .report-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .export-time {
+            font-size: 12px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            color: #555;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+        th, td {
+            border: 1px solid #666;
+            padding: 6px 8px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #d0ebff;
+            color: #003b73;
+        }
+        tr:nth-child(even) {
+            background-color: #f7f9fc;
+        }
+        .summary {
+            margin-top: 40px;
+            font-size: 14px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            font-size: 12px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <img src="{% static 'images/laugfs_logo.png' %}" class="logo" alt="Laugfs Eco Sri">
+        <div class="export-time">Exported on: {{ export_time }}</div>
+        <div class="report-title">Complaint Report</div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Date</th>
+                <th>Center</th>
+                <th>Area Manager</th>
+                <th>Email</th>
+                <th>VIN</th>
+                <th>Phone</th>
+                <th>Complaint No</th>
+                <th>Immediate Action</th>
+                <th>Correct Action</th>
+                <th>Type</th>
+                <th>Comment</th>
+                <th>Status</th>
+                <th>Reporter</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in complaints %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ c.date }}</td>
+                <td>{{ c.center }}</td>
+                <td>{{ c.area_manager }}</td>
+                <td>{{ c.area_manager_email }}</td>
+                <td>{{ c.vin }}</td>
+                <td>{{ c.phone_no }}</td>
+                <td>{{ c.complaint_no }}</td>
+                <td>{{ c.immediate_action }}</td>
+                <td>{{ c.correct_action }}</td>
+                <td>{{ c.complaint_type }}</td>
+                <td>{{ c.comment }}</td>
+                <td>{{ c.status }}</td>
+                <td>{{ c.reporter.username }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="14" style="text-align:center;">No data available</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="summary">
+        <strong>Summary:</strong><br>
+        Total Complaints: {{ total_complaints }}<br>
+        Pending: {{ pending_count }} ({{ pending_percent }}%)<br>
+        Done: {{ done_count }} ({{ done_percent }}%)<br>
+        In Progress: {{ progress_count }} ({{ progress_percent }}%)
+    </div>
+
+    <div class="footer">
+        &copy; 2025 Laugfs Eco Sri. All Rights Reserved. – Tharu Creation
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Class Change Report</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 text-gray-800 p-8 font-sans">
+
+  <h2 class="text-3xl font-semibold text-center mb-8">Class Change Report</h2>
+
+  <div class="overflow-x-auto">
+    <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
+      <thead class="bg-gray-100 border-b border-gray-300">
+        <tr>
+          <th class="text-left py-3 px-4 font-medium text-gray-700 border-r border-gray-300">Date</th>
+          <th class="text-left py-3 px-4 font-medium text-gray-700 border-r border-gray-300">Time</th>
+          <th class="text-left py-3 px-4 font-medium text-gray-700 border-r border-gray-300">Center</th>
+          <th class="text-left py-3 px-4 font-medium text-gray-700 border-r border-gray-300">VIN</th>
+          <th class="text-left py-3 px-4 font-medium text-gray-700 border-r border-gray-300">Previous Class</th>
+          <th class="text-left py-3 px-4 font-medium text-gray-700 border-r border-gray-300">New Class</th>
+          <th class="text-left py-3 px-4 font-medium text-gray-700 border-r border-gray-300">Approved By</th>
+          <th class="text-left py-3 px-4 font-medium text-gray-700">Updated By</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for change in class_changes %}
+        <tr class="{% cycle 'bg-white' 'bg-gray-50' %}">
+          <td class="py-3 px-4 border-r border-gray-300">{{ change.date }}</td>
+          <td class="py-3 px-4 border-r border-gray-300">{{ change.time }}</td>
+          <td class="py-3 px-4 border-r border-gray-300">{{ change.center }}</td>
+          <td class="py-3 px-4 border-r border-gray-300">{{ change.vin }}</td>
+          <td class="py-3 px-4 border-r border-gray-300">{{ change.previous_class }}</td>
+          <td class="py-3 px-4 border-r border-gray-300">{{ change.new_class }}</td>
+          <td class="py-3 px-4 border-r border-gray-300">{{ change.approved_by }}</td>
+          <td class="py-3 px-4">{{ change.updated_by }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>

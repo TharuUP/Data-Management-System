@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Complaint Notification</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+<body class="bg-gray-50 font-sans p-6">
+  <div class="max-w-xl mx-auto bg-white rounded-lg shadow-md p-6">
+    <h1 class="text-2xl font-bold text-gray-800 mb-4">New Complaint Registered</h1>
+    <p class="mb-6 text-gray-700">A new complaint has been registered with the following details:</p>
+    
+    <ul class="space-y-3 text-gray-700">
+      <li><span class="font-semibold">Complaint No:</span> {{ complaint.complaint_no }}</li>
+      <li><span class="font-semibold">Date:</span> {{ complaint.date }}</li>
+      <li><span class="font-semibold">Center:</span> {{ complaint.center }}</li>
+      <li><span class="font-semibold">Area Manager:</span> {{ complaint.area_manager }}</li>
+      <li><span class="font-semibold">Area Manager Email:</span> {{ complaint.area_manager_email }}</li>
+      <li><span class="font-semibold">VIN:</span> {{ complaint.vin }}</li>
+      <li><span class="font-semibold">Phone No:</span> {{ complaint.tele_no }}</li>
+      <li><span class="font-semibold">Immediate Action:</span> {{ complaint.immediate_action }}</li>
+      <li><span class="font-semibold">Correct Action:</span> {{ complaint.correct_action }}</li>
+      <li><span class="font-semibold">Complaint Type:</span> {{ complaint.complaint_type }}</li>
+      <li><span class="font-semibold">Comment:</span> {{ complaint.comment }}</li>
+      <li><span class="font-semibold">Status:</span> {{ complaint.status }}</li>
+      <li><span class="font-semibold">Reporter:</span> {{ complaint.reporter.get_full_name }}</li>
+    </ul>
+
+    <p class="mt-6 text-sm text-gray-500">If you have any doubt, feel free to contact the LAUGFS ECO SRI hotline : 0117 770 770</p>
+    <p class="mt-4 text-sm text-gray-500"> © 2025 R & D Department — Tharusha Bimsara</p>
+   
+  </div>
+</body>
+</html>
